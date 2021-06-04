@@ -6,4 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  loadedPage = 'recipes';
+  onRouting(page: string){
+    this.loadedPage = page; 
+  }
 }
