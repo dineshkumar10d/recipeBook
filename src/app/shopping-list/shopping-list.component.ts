@@ -7,15 +7,15 @@ import { Ingredient } from '../shared/ingredient.model';
   styleUrls: ['./shopping-list.component.css']
 })
 export class ShoppingListComponent implements OnInit {
- ingredients:Ingredient[]=[
-   new Ingredient('sugar',100),
-   new Ingredient('weat flour',150)
- ];
+ ingredients:Ingredient[]=[];
   constructor() { }
 
   ngOnInit(): void {
   }
   onIngredientAdded(ingredient: Ingredient){
     this.ingredients.push(ingredient);
+  }
+  onModify(i:any){
+    this.ingredients.splice(i,1);
   }
 }
