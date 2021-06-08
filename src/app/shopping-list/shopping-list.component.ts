@@ -15,7 +15,7 @@ export class ShoppingListComponent implements OnInit {
   onIngredientAdded(ingredient: Ingredient){
     this.ingredients.push(ingredient);
   }
-  onModify(i:any){
+  onDelete(i:any){
     this.ingredients.splice(i,1);
   }
 }
