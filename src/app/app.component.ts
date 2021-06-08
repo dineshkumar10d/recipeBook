@@ -8,8 +8,4 @@ import { RecipeService } from './recipes/recipe.service';
   providers:[RecipeService]
 })
 export class AppComponent {
-  loadedPage = 'recipes';
-  onRouting(page: string){
-    this.loadedPage = page; 
-  }
 }
