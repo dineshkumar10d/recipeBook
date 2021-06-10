@@ -7,7 +7,7 @@ import { Ingredient } from '../shared/ingredient.model';
 })
 export class ShoppingListService {
   startedEditing = new Subject<number>();
-  ingredientChanged = new EventEmitter<Ingredient[]>();
+  ingredientChanged = new Subject<Ingredient[]>();
   private ingredients:Ingredient[]=[
     new Ingredient('sugar',100),
     new Ingredient('weat flour',150)
@@ -23,12 +23,12 @@ export class ShoppingListService {
   }
   addIngredient(ingredient: Ingredient){
     this.ingredients.push(ingredient);
-    this.ingredientChanged.emit(this.ingredients.slice());
+    this.ingredientChanged.next(this.ingredients.slice());
   }
 
   addIngredients(ingredients: Ingredient[]){
     this.ingredients.push(...ingredients);
-    this.ingredientChanged.emit(this.ingredients.slice());
+    this.ingredientChanged.next(this.ingredients.slice());
   }
 
   updateIngredient(index: number, newIngredient: Ingredient){
