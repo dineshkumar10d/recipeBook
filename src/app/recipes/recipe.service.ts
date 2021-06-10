@@ -6,6 +6,9 @@ import { Recipe } from "./recipe.model";
 
 @Injectable()
 export class RecipeService{
+    recipeSelected = new EventEmitter<Recipe>();
+    recipeChanged = new Subject<Recipe[]>();
+
     private recipes:Recipe[]=[
         new Recipe('Wheat-Halwa',
         'Thirunelveli Halwa - tasty',
@@ -34,5 +37,20 @@ export class RecipeService{
 
       addIngredientsToShoppingList(ingredients: Ingredient[]){
         this.slService.addIngredients(ingredients);
+      }
+
+      addRecipe(recipe: Recipe){
+        this.recipes.push(recipe);
+        this.recipeChanged.next(this.recipes.slice());
+      }
+
+      updateRecipe(index: number, newRecipe: Recipe){
+        this.recipes[index] = newRecipe;
+        this.recipeChanged.next(this.recipes.slice());
+      }
+
+      deleteRecipe(index: number){
+        this.recipes.splice(index,1);
+        this.recipeChanged.next(this.recipes.slice());
       }
 }
